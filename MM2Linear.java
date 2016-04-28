@@ -2,27 +2,35 @@ package com.ebalawejder.MinMax2;
 
 public class MM2Linear 
 {
+	static int counter = 0;
+	
 	public static void main(String[] args) 
 	{
-		// array of size 2^k, k a natural number, values 10..99
-
+		// array of size 2^k, k a natural number
 		final int n = 64;
 		int[] arrayRandom = new int[n];
 
+		// initialize the arrayRandom[] with random values 10..99
 		for (int i = 0; i < n; i++) 
 		{
 			// a <= x < a + b
 			arrayRandom[i] = 10 + (int) (Math.random() * 90);
 		}
-
+		
+		// print the array with 16 elements per line
 		print(arrayRandom, 16);
 
-		// print the fourArray returned from minmax2Linear() method
+		// call minmax2Linear on the array of random values, size = 64
+		// and create a reference to it
 		int[] reference = minmax2Linear(arrayRandom);
+		
+		// print the fourArray returned from minmax2Linear() method
 		for (int value : reference) 
 		{
 			System.out.print(value + " ");
 		}
+		
+		System.out.println("\nNumber of comparisons = " + counter);
 	}
 
 	private static int[] minmax2Linear(int[] array) 
@@ -38,21 +46,29 @@ public class MM2Linear
 		{
 			if (array[i] > max1) 
 			{
+				counter++;
 				max2 = max1;
 				max1 = array[i];
 			} 
 			else if (array[i] > max2) 
 			{
+				counter += 2;
 				max2 = array[i];
 			} 
 			else if (array[i] < min1) 
 			{
+				counter += 3;
 				min2 = min1;
 				min1 = array[i];
 			} 
 			else if (array[i] < min2) 
 			{
+				counter += 4;
 				min2 = array[i];
+			}
+			else
+			{
+				counter += 5;
 			}
 		}
 		fourArray[0] = min1;
