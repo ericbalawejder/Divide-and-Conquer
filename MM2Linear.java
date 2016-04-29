@@ -2,30 +2,31 @@ package com.ebalawejder.MinMax2;
 
 public class MM2Linear 
 {
-	// class variable to count the number of comparisons in minmax2Linear algorithm.
-	// initializes to 0 by default
+	// class variable to count the number of comparisons in minmax2Linear
+	// algorithm. Initializes to 0 by default
 	static int counter;
-	
+
 	public static void main(String[] args) 
 	{
 		// array of size 2^k, k a natural number
 		final int n = 64;
 		int[] arrayRandom = new int[n];
-		
-		// fill arrayRandom[] with random values from the range 10..99 with the 
-		// createRandomArray() method and create a reference to it.  
+
+		// fill arrayRandom[] with random values from the range 10..99 with the
+		// createRandomArray() method and create a reference to it
 		int[] reference = createRandomArray(arrayRandom, 10, 90);
-		
+
 		// print the array with 16 elements per line
 		print(reference, 16);
 
 		// call minmax2Linear on the array of random values and show the four array
 		print(minmax2Linear(reference));
-		
+
 		// show the number of comparisons
 		System.out.println("Number of comparisons = " + counter);
 	}
-
+	
+	// minmax2Linear() finds the 2 least and 2 greatest elements of an array
 	private static int[] minmax2Linear(int[] array) 
 	{
 		int[] fourArray = new int[4];
@@ -58,8 +59,8 @@ public class MM2Linear
 			{
 				counter += 4;
 				min2 = array[i];
-			}
-			else
+			} 
+			else 
 			{
 				counter += 5;
 			}
@@ -85,24 +86,24 @@ public class MM2Linear
 		}
 		System.out.println();
 	}
-	
+
 	// array print method
-	public static void print(int[] array)
-    {
-       for (int i = 0; i < array.length; i++)
-       {
-          System.out.print(array[i] + " ");
-       }
-       System.out.println();
-    }   
-	
+	public static void print(int[] array) 
+	{
+		for (int i = 0; i < array.length; i++) 
+		{
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}
+
 	// method to fill an array with random values from the range a <= x < (a + b)
-	public static int[] createRandomArray(int[] array, int a, int b)
-    {    
-       for (int i = 0; i < array.length; i++)
-       {
-    	   array[i] = a + (int)(Math.random() * b);  
-       }
-       return array;
-    }
+	public static int[] createRandomArray(int[] array, int a, int b) 
+	{
+		for (int i = 0; i < array.length; i++) 
+		{
+			array[i] = a + (int) (Math.random() * b);
+		}
+		return array;
+	}
 }
