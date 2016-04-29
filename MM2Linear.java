@@ -2,35 +2,28 @@ package com.ebalawejder.MinMax2;
 
 public class MM2Linear 
 {
-	static int counter = 0;
+	// class variable to count the number of comparisons in minmax2Linear algorithm.
+	// initializes to 0 by default
+	static int counter;
 	
 	public static void main(String[] args) 
 	{
 		// array of size 2^k, k a natural number
 		final int n = 64;
 		int[] arrayRandom = new int[n];
-
-		// initialize the arrayRandom[] with random values 10..99
-		for (int i = 0; i < n; i++) 
-		{
-			// a <= x < a + b
-			arrayRandom[i] = 10 + (int) (Math.random() * 90);
-		}
+		
+		// fill arrayRandom[] with random values from the range 10..99 with the 
+		// createRandomArray() method and create a reference to it.  
+		int[] reference = createRandomArray(arrayRandom, 10, 90);
 		
 		// print the array with 16 elements per line
-		print(arrayRandom, 16);
+		print(reference, 16);
 
-		// call minmax2Linear on the array of random values, size = 64
-		// and create a reference to it
-		int[] reference = minmax2Linear(arrayRandom);
+		// call minmax2Linear on the array of random values and show the four array
+		print(minmax2Linear(reference));
 		
-		// print the fourArray returned from minmax2Linear() method
-		for (int value : reference) 
-		{
-			System.out.print(value + " ");
-		}
-		
-		System.out.println("\nNumber of comparisons = " + counter);
+		// show the number of comparisons
+		System.out.println("Number of comparisons = " + counter);
 	}
 
 	private static int[] minmax2Linear(int[] array) 
@@ -92,4 +85,24 @@ public class MM2Linear
 		}
 		System.out.println();
 	}
+	
+	// array print method
+	public static void print(int[] array)
+    {
+       for (int i = 0; i < array.length; i++)
+       {
+          System.out.print(array[i] + " ");
+       }
+       System.out.println();
+    }   
+	
+	// method to fill an array with random values from the range a <= x < (a + b)
+	public static int[] createRandomArray(int[] array, int a, int b)
+    {    
+       for (int i = 0; i < array.length; i++)
+       {
+    	   array[i] = a + (int)(Math.random() * b);  
+       }
+       return array;
+    }
 }
