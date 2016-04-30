@@ -14,13 +14,13 @@ public class MM2Linear
 
 		// fill arrayRandom[] with random values from the range 10..99 with the
 		// createRandomArray() method and create a reference to it
-		int[] reference = createRandomArray(arrayRandom, 10, 90);
+		int[] reference = Arrays.createRandomArray(arrayRandom, 10, 90);
 
 		// print the array with 16 elements per line
-		print(reference, 16);
+		Arrays.print(reference, 16);
 
 		// call minmax2Linear on the array of random values and show the four array
-		print(minmax2Linear(reference));
+		Arrays.print(minmax2Linear(reference));
 
 		// show the number of comparisons
 		System.out.println("Number of comparisons = " + counter);
@@ -71,39 +71,5 @@ public class MM2Linear
 		fourArray[3] = max1;
 
 		return fourArray;
-	}
-
-	// array print method with added number per line feature
-	public static void print(int[] array, int numberPerLine) 
-	{
-		for (int i = 0; i < array.length; i++) 
-		{
-			if (i != 0 && i % numberPerLine == 0) 
-			{
-				System.out.println();
-			}
-			System.out.print(array[i] + " ");
-		}
-		System.out.println();
-	}
-
-	// array print method
-	public static void print(int[] array) 
-	{
-		for (int i = 0; i < array.length; i++) 
-		{
-			System.out.print(array[i] + " ");
-		}
-		System.out.println();
-	}
-
-	// method to fill an array with random values from the range a <= x < (a + b)
-	public static int[] createRandomArray(int[] array, int a, int b) 
-	{
-		for (int i = 0; i < array.length; i++) 
-		{
-			array[i] = a + (int) (Math.random() * b);
-		}
-		return array;
 	}
 }
