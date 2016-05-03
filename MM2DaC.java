@@ -18,8 +18,13 @@ public class MM2DaC
 		
 		// print the array with 16 elements per line
 		Arrays.print(reference, 16);
+		int[] result = minmax2DaC(reference);
+		System.out.println();
+		java.util.Arrays.sort(reference);
+		Arrays.print(reference, 16);
+		System.out.println();
+		Arrays.print(result);
 		
-		//Arrays.print(minmax2DaC(reference));
 	}
 
 	public static int[] minmax2DaC(int[] array)
@@ -37,19 +42,10 @@ public class MM2DaC
 		{
 			return merge(left, right);
 		}
-		
-		int[][] leftArrays = Arrays.arraySplit(left);
-		int[] firstLeftArray = leftArrays[0];
-		int[] secondLeftArray = leftArrays[1];
-		int[] mergedLeft = minmax2DaCRecursion(firstLeftArray, secondLeftArray); 
-		
-		int[][] rightArrays = Arrays.arraySplit(right);
-		int[] firstRightArray = rightArrays[0];
-		int[] secondRightArray = rightArrays[1];
-		int[] mergedRight = minmax2DaCRecursion(firstRightArray, secondRightArray);
-		
-		minmax2DaCRecursion(mergedLeft, mergedRight);
-		
+
+		int[] mergedLeft = minmax2DaC(left); 
+		int[] mergedRight = minmax2DaC(right);
+		return merge(mergedLeft, mergedRight);		
 	}
 	
 	public static int[] merge(int[] array1, int[] array2)

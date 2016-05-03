@@ -46,9 +46,9 @@ public class Arrays
 			array1[i] = array[i];
 		}
 		
-		for (int i = array.length/2; i < array.length; i++)
+		for (int i = 0; i < array.length/2; i++)
 		{
-			array2[i] = array[i];
+			array2[i] = array[array.length/2 + i];
 		}
 		
 		int[][] arrays = {array1, array2};
