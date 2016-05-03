@@ -35,4 +35,24 @@ public class Arrays
 		}
 		return array;
 	}
+	
+	public static int[][] arraySplit(int[] array)
+	{
+		int[] array1 = new int[array.length/2];
+		int[] array2 = new int[array.length/2];
+		
+		for (int i = 0; i < array.length/2; i++)
+		{
+			array1[i] = array[i];
+		}
+		
+		for (int i = array.length/2; i < array.length; i++)
+		{
+			array2[i] = array[i];
+		}
+		
+		int[][] arrays = {array1, array2};
+		
+		return arrays;
+	}
 }

@@ -24,21 +24,32 @@ public class MM2DaC
 
 	public static int[] minmax2DaC(int[] array)
 	{
-		int[] fourArray = new int[4];
+		int[][] arrays = Arrays.arraySplit(array);
+		int[] left = arrays[0];
+		int[] right = arrays[1];
 		
-		
-		if (array.length > 4)
+		return minmax2DaCRecursion(left, right);
+	}
+	
+	public static int[] minmax2DaCRecursion(int[] left, int[] right)
+	{
+		if (left.length == 4 && right.length == 4)
 		{
-			int[] array1 = new int[array.length/2];
-			int[] array2 = new int[array.length/2];
-			
-			for (int i = 0; i < array.length/2; i++)
-			{
-				
-			}
+			return merge(left, right);
 		}
 		
-		return fourArray;
+		int[][] leftArrays = Arrays.arraySplit(left);
+		int[] firstLeftArray = leftArrays[0];
+		int[] secondLeftArray = leftArrays[1];
+		int[] mergedLeft = minmax2DaCRecursion(firstLeftArray, secondLeftArray); 
+		
+		int[][] rightArrays = Arrays.arraySplit(right);
+		int[] firstRightArray = rightArrays[0];
+		int[] secondRightArray = rightArrays[1];
+		int[] mergedRight = minmax2DaCRecursion(firstRightArray, secondRightArray);
+		
+		minmax2DaCRecursion(mergedLeft, mergedRight);
+		
 	}
 	
 	public static int[] merge(int[] array1, int[] array2)

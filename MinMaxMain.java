@@ -27,5 +27,4 @@ public class MinMaxMain
 			System.out.println("\n");
 		}
 	}
-
 }
