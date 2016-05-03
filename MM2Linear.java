@@ -27,10 +27,11 @@ public class MM2Linear
 	}
 	
 	// minmax2Linear() finds the 2 least and 2 greatest elements of an array
-	private static int[] minmax2Linear(int[] array) 
+	public static int[] minmax2Linear(int[] array) 
 	{
 		int[] fourArray = new int[4];
-
+		counter = 0;
+		
 		int min1 = array[0];
 		int min2 = array[1];
 		int max2 = array[1];

@@ -4,21 +4,44 @@ public class MM2DaC
 {
 	public static void main(String[] args) 
 	{
-		int[] sample1 = {15,111,36,2};
-		int[] sample2 = {200,1,6,23};
-		Arrays.print(minmax2Four(sample1));
-		Arrays.print(minmax2Four(sample2));
+//		int[] sample1 = {15,111,36,2};
+//		int[] sample2 = {200,1,6,23};
+//		Arrays.print(minmax2Four(sample1));
+//		Arrays.print(minmax2Four(sample2));
+//		
+//		Arrays.print(merge(sample1, sample2));
 		
-		Arrays.print(merge(sample1, sample2));
+		// array of size 2^k, k a natural number
+		final int n = 64;
+		int[] arrayRandom = new int[n];
+		int[] reference = Arrays.createRandomArray(arrayRandom, 10, 90);
+		
+		// print the array with 16 elements per line
+		Arrays.print(reference, 16);
+		
+		//Arrays.print(minmax2DaC(reference));
 	}
 
-	private static int[] minmax2DaC(int[] array)
+	public static int[] minmax2DaC(int[] array)
 	{
 		int[] fourArray = new int[4];
+		
+		
+		if (array.length > 4)
+		{
+			int[] array1 = new int[array.length/2];
+			int[] array2 = new int[array.length/2];
+			
+			for (int i = 0; i < array.length/2; i++)
+			{
+				
+			}
+		}
+		
 		return fourArray;
 	}
 	
-	private static int[] merge(int[] array1, int[] array2)
+	public static int[] merge(int[] array1, int[] array2)
 	{
 		int[] fourArray = new int[4];
 		
@@ -76,11 +99,11 @@ public class MM2DaC
 				fourArray[2] = fourArray2[2];
 			}
 		}
-		
+		// return four array with two smallest and two largest elements
 		return fourArray;
 	}
 	
-	private static int[] minmax2Four(int[] array)
+	public static int[] minmax2Four(int[] array)
 	{
 		int[] fourArray = new int[4];
 		
