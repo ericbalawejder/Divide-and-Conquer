@@ -22,9 +22,61 @@ public class MinMaxMain
 			Arrays.print(MM2Linear.minmax2Linear(reference));
 			System.out.println("\tNumber of comparisons made: " + MM2Linear.counter);
 			System.out.println();
-			System.out.println("\tMinMax2 using the Divide and Conquer Algorithm: ");
-			System.out.println("\tNumber of comparisons made: ");
+			System.out.print("\tMinMax2 using the Divide and Conquer Algorithm: ");
+			Arrays.print(MM2DaC.minmax2DaC(reference));
+			System.out.println("\tNumber of comparisons made: " + MM2DaC.counter);
 			System.out.println("\n");
 		}
+		
+		int linearMin = -1, linearMax = -1, divideConquerMin = -1, divideConquerMax = -1;
+		
+		for (int i = 0; i < 10000; i++)
+		{
+			int[] reference = Arrays.createRandomArray(arrayRandom, 10, 90);
+			MM2Linear.minmax2Linear(reference);
+			MM2DaC.minmax2DaC(reference);
+			
+			// for special case first loop entry
+			if ( linearMin == -1)
+			{
+				linearMin = MM2Linear.counter;
+			}
+			else if (MM2Linear.counter < linearMin)
+			{
+				linearMin =  MM2Linear.counter;
+			}
+			
+			if (linearMax == -1)
+			{
+				linearMax = MM2Linear.counter;
+			}
+			else if (MM2Linear.counter > linearMax)
+			{
+				linearMax = MM2Linear.counter;
+			}
+			
+			if (divideConquerMin == -1)
+			{
+				divideConquerMin = MM2DaC.counter;
+			}
+			else if (MM2DaC.counter < divideConquerMin)
+			{
+				divideConquerMin = MM2DaC.counter;
+			}
+			
+			if (divideConquerMax == -1)
+			{
+				divideConquerMax = MM2DaC.counter;
+			}
+			else if (MM2DaC.counter > divideConquerMax)
+			{
+				divideConquerMax = MM2DaC.counter;
+			}
+		}
+		
+		System.out.println("===================================================");
+		// print range of values
+		System.out.println("Range of numbers for linear algorithm (n = " + n + "): " + linearMin + ".." + linearMax);
+		System.out.println("Range of numbers for divide and conquer algorithm (n = " + n + "): " + divideConquerMin + ".." + divideConquerMax);
 	}
 }
