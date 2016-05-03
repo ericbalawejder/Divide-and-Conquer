@@ -63,7 +63,7 @@ public class MM2Linear
 			} 
 			else 
 			{
-				counter += 5;
+				counter += 4;
 			}
 		}
 		fourArray[0] = min1;
