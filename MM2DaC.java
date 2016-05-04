@@ -2,50 +2,35 @@ package com.ebalawejder.MinMax2;
 
 public class MM2DaC 
 {
+	// class variable to count the number of comparisons in 
+	// minmax2DaC algorithm. Initializes to 0 by default
 	static int counter;
 	
-	public static void main(String[] args) 
-	{
-//		int[] sample1 = {15,111,36,2};
-//		int[] sample2 = {200,1,6,23};
-//		Arrays.print(minmax2Four(sample1));
-//		Arrays.print(minmax2Four(sample2));
-//		
-//		Arrays.print(merge(sample1, sample2));
-		
-		// array of size 2^k, k a natural number
-		final int n = 64;
-		int[] arrayRandom = new int[n];
-		int[] reference = Arrays.createRandomArray(arrayRandom, 10, 90);
-		
-		// print the array with 16 elements per line
-		Arrays.print(reference, 16);
-		int[] result = minmax2DaC(reference);
-		System.out.println();
-		java.util.Arrays.sort(reference);
-		Arrays.print(reference, 16);
-		System.out.println();
-		Arrays.print(result);
-		System.out.println(counter);
-	}
-
+	// divide and conquer algorithm to find the lest two
+	// and greatest two elements in an array
 	public static int[] minmax2DaC(int[] array)
 	{
+		// reset counter to 0 each time method is called
 		counter = 0;
 		return toFourArray(array);
 	}
 
+	// split array in half
 	public static int[] toFourArray(int[] array) 
 	{
+		// create a two dimension array to store
+		// each half of the input array
 		int[][] arrays = Arrays.arraySplit(array);
 		int[] left = arrays[0];
 		int[] right = arrays[1];
 		
+		// give each half to toFourArrayRecursion()
 		return toFourArrayRecursion(left, right);
 	}
 	
 	public static int[] toFourArrayRecursion(int[] left, int[] right)
 	{
+		// base case for termination
 		if (left.length == 4 && right.length == 4)
 		{
 			return merge(left, right);
@@ -56,10 +41,12 @@ public class MM2DaC
 		return toFourArrayRecursion(mergedLeft, mergedRight);		
 	}
 	
+	// method that takes two four arrays and returns their four array
 	public static int[] merge(int[] array1, int[] array2)
 	{
 		int[] fourArray = new int[4];
 		
+		// sort each array
 		int[] fourArray1 = minmax2Four(array1);
 		int[] fourArray2 = minmax2Four(array2);
 		
@@ -114,10 +101,12 @@ public class MM2DaC
 				fourArray[2] = fourArray2[2];
 			}
 		}
-		// return four array with two smallest and two largest elements
+		// return four array with two smallest and two 
+		// largest elements
 		return fourArray;
 	}
 	
+	// takes an array of size four and returns its four array
 	public static int[] minmax2Four(int[] array)
 	{
 		int[] fourArray = new int[4];
@@ -195,6 +184,7 @@ public class MM2DaC
 			counter++;
 		}
 		
+		// assign values to four array
 		fourArray[0] = a;
 		fourArray[1] = b;
 		fourArray[2] = c;

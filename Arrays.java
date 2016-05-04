@@ -1,5 +1,6 @@
 package com.ebalawejder.MinMax2;
 
+// class to handle array methods
 public class Arrays 
 {
 	// array print method with added number per line feature
@@ -26,7 +27,8 @@ public class Arrays
 		System.out.println();
 	}
 
-	// method to fill an array with random values from the range a <= x < (a + b)
+	// method to fill an array with random values from the range 
+	// a <= x < (a + b)
 	public static int[] createRandomArray(int[] array, int a, int b) 
 	{
 		for (int i = 0; i < array.length; i++) 
@@ -36,18 +38,22 @@ public class Arrays
 		return array;
 	}
 	
-	// method to bisect an array in halves keeping the elements intact.
+	
+	
+	// method to bisect an array in half keeping the elements intact.
 	// returns an array with both array halves
 	public static int[][] arraySplit(int[] array)
 	{
 		int[] array1 = new int[array.length/2];
 		int[] array2 = new int[array.length/2];
 		
+		// place elements back into first array
 		for (int i = 0; i < array.length/2; i++)
 		{
 			array1[i] = array[i];
 		}
 		
+		// place elements back into second array
 		for (int i = 0; i < array.length/2; i++)
 		{
 			array2[i] = array[array.length/2 + i];
