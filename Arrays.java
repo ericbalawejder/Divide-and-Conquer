@@ -36,6 +36,8 @@ public class Arrays
 		return array;
 	}
 	
+	// method to bisect an array in halves keeping the elements intact.
+	// returns an array with both array halves
 	public static int[][] arraySplit(int[] array)
 	{
 		int[] array1 = new int[array.length/2];

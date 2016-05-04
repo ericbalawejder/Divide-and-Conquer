@@ -60,10 +60,14 @@ public class MM2Linear
 				counter += 2;
 				max2 = array[i];
 			} 
+			else
+			{
+				counter += 2;
+			}
 			
 			if (array[i] < min1) 
 			{
-				counter += 1;
+				counter++;
 				min2 = min1;
 				min1 = array[i];
 			} 
@@ -74,7 +78,7 @@ public class MM2Linear
 			} 
 			else 
 			{
-				counter += 4;
+				counter += 2;
 			}
 		}
 		fourArray[0] = min1;
