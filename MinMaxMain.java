@@ -28,55 +28,61 @@ public class MinMaxMain
 			System.out.println("\n");
 		}
 		
-		int linearMin = -1, linearMax = -1, divideConquerMin = -1, divideConquerMax = -1;
+		int linearMin = 0, linearMax = 0, divideConquerMin = 0, divideConquerMax = 0;
+		int agreementCounter = 0;
 		
 		for (int i = 0; i < 10000; i++)
 		{
 			int[] reference = Arrays.createRandomArray(arrayRandom, 10, 90);
-			MM2Linear.minmax2Linear(reference);
-			MM2DaC.minmax2DaC(reference);
+			int[] linearResult = MM2Linear.minmax2Linear(reference);
+			int[] dacResult = MM2DaC.minmax2DaC(reference);
+			
+			if (java.util.Arrays.equals(linearResult, dacResult))
+			{
+//				Arrays.print(reference, 16);
+//				System.out.println();
+//				java.util.Arrays.sort(reference);
+//				Arrays.print(reference, 16);
+//				System.out.println("Bogues results ");
+//				Arrays.print(linearResult);
+//				Arrays.print(dacResult);
+				agreementCounter++;
+			}
 			
 			// for special case first loop entry
-			if ( linearMin == -1)
+			if  (i == 0)
 			{
 				linearMin = MM2Linear.counter;
+				linearMax = MM2Linear.counter;
+				divideConquerMin = MM2DaC.counter;
+				divideConquerMax = MM2DaC.counter;
 			}
-			else if (MM2Linear.counter < linearMin)
+			
+			if (MM2Linear.counter < linearMin)
 			{
 				linearMin =  MM2Linear.counter;
 			}
 			
-			if (linearMax == -1)
-			{
-				linearMax = MM2Linear.counter;
-			}
-			else if (MM2Linear.counter > linearMax)
+			if (MM2Linear.counter > linearMax)
 			{
 				linearMax = MM2Linear.counter;
 			}
 			
-			if (divideConquerMin == -1)
-			{
-				divideConquerMin = MM2DaC.counter;
-			}
-			else if (MM2DaC.counter < divideConquerMin)
+			if (MM2DaC.counter < divideConquerMin)
 			{
 				divideConquerMin = MM2DaC.counter;
 			}
 			
-			if (divideConquerMax == -1)
-			{
-				divideConquerMax = MM2DaC.counter;
-			}
-			else if (MM2DaC.counter > divideConquerMax)
+			if (MM2DaC.counter > divideConquerMax)
 			{
 				divideConquerMax = MM2DaC.counter;
 			}
 		}
 		
-		System.out.println("===================================================");
+		System.out.println("=========================================================================");
 		// print range of values
 		System.out.println("Range of numbers for linear algorithm (n = " + n + "): " + linearMin + ".." + linearMax);
 		System.out.println("Range of numbers for divide and conquer algorithm (n = " + n + "): " + divideConquerMin + ".." + divideConquerMax);
+		System.out.println("The two algorithms were compared 10000 times. They agreed in " + agreementCounter + " cases.");
 	}
 }
